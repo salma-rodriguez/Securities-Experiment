@@ -14305,6 +14305,11 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="What-is-a-Constant-Maturity-Treasury?">What is a Constant Maturity Treasury?<a class="anchor-link" href="#What-is-a-Constant-Maturity-Treasury?">&#182;</a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>According to <a href="https://www.investopedia.com/terms/c/constantmaturity.asp">Investopedia</a>, Constant Maturity is an adjustment for equivalent maturity, used by the Federal Reserve Board to compute an index based on the average yield of various Treasury securities maturing at different periods.</p>
 
 </div>
@@ -14323,6 +14328,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>According to the Board of Governors of the Federal Reserve System, a <a href="https://www.federalreserve.gov/data/nominal-yield-curve.htm">nominal Treasury security</a> is an issuance that specifies principal and interest as fixed dollar amounts to the holder. Since Treasury securities are backed by the full faith and credit of the U.S. government, the returns investors can earn on them are often used as a “risk-free” benchmark in finance research and investment practice. These securities are a promise to repay the principal (with interest if a note or a bond) to the holder (can be a public or private entity). Therefore, the real yield curve rate would be adjusted for inflation of interest rates.</p>
+<p>The real yield determines the cashflow an investor in secondary markets can obtain by purchasing $\text{TIPS}$, which are Inflation Protected Securities offered by the U.S. Treasury department and other securities that offer similar inflation protection to investors.</p>
 
 </div>
 </div>
@@ -14522,7 +14528,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Real-CMT-Yield-Curve-Rates-Rates">Real CMT Yield Curve Rates Rates<a class="anchor-link" href="#Real-CMT-Yield-Curve-Rates-Rates">&#182;</a></h3>
+<h3 id="Real-CMT-Yield-Curve-Rates">Real CMT Yield Curve Rates<a class="anchor-link" href="#Real-CMT-Yield-Curve-Rates">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -16293,7 +16299,7 @@ M398.259 295.124 L618.341 295.124 L618.341 253.652 L398.259 253.652 L398.259 295
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>where issuance in <span style="color:blue">blue</span> is the nominal rate and issuance in <span style="color:red">red</span> is the real rate.</p>
+<p>where issuances in <span style="color:blue">blue</span> are nominal rates and issuances in <span style="color:red">red</span> are real rates.</p>
 
 </div>
 </div>
@@ -19501,8 +19507,8 @@ M3017.93 1795.74 L3243.59 1795.74 L3243.59 1754.27 L3017.93 1754.27 L3017.93 179
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The nominal interest rates are usually not adjusted for inflation. The aim is to determine <strong>inflation</strong>. Stabilized inflation rates are unlikely to take place in a <strong>Market Economy</strong>, where there are real laws of supply and demand and equilibrium doesn't just happen "magically".</p>
-<p>It is still worthwhile to determine any stationarity in the stochastic process corresponding to each CMT yield curve rate series.</p>
+<p>The nominal CMT yield curve rates are usually not adjusted for inflation. The aim is to determine <strong>inflation</strong>. Stabilized inflation rates are unlikely to take place in a <strong>Market Economy</strong>, where there are real laws of supply and demand and equilibrium doesn't just happen "magically".</p>
+<p>It is still worthwhile to determine any stationarity in the stochastic process corresponding to each CMT yield curve rate series, or remove nonstationarity for forecasting purposes.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19769,7 +19775,7 @@ Details:
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>In the case of real interest rates, <strong>I reject the $H_0$ hypothesis with confidence levels between 41.21% and 56.69%</strong>. Since there is rejection for both real and nominal, I will require a <strong>first order differencing transformation</strong> for these two types of interest rates, due to nonstationarity. I will be taking the transformation for inflation rates, since the aim of my study is to determine the financial leverage of securities on the average.</p>
+<p>In the case of real yield curve rates, <strong>I reject the $H_0$ hypothesis with confidence levels between 41.21% and 56.69%</strong>. Since there is rejection for both real and nominal, I will require a <strong>first order differencing transformation</strong> for these two types of rates, due to nonstationarity. I need to take the transformation for inflation rates, since the aim of my study is to determine the financial leverage of securities on the average.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19976,7 +19982,7 @@ Details:
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I want to determine if the transformed data sets have a normal distribution. The Jarque-Bera Lagrange Multiplier Test attempts to determine the normality of the data set, by testing higher order moments, such as <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
+<p>I want to determine if the transformed data set has a normal distribution. The Jarque-Bera Lagrange Multiplier Test attempts to determine the normality of the data set, by testing higher order moments, such as <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -20094,7 +20100,7 @@ Details:
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The JBT Normality Test <strong>passes with an adequate confidence level for one Constant Maturity Treasury Coupon Security</strong>. The Jarque-Bera Test passes for the 10-Year Bond, it having more central tendency (hence being more predictable) in nominal inflation, since I fail to reject $H_0$ with 56.60% confidence.</p>
+<p>The J-B Normality Test <strong>passes with an adequate confidence level for one Constant Maturity Treasury Coupon Security</strong>. The Jarque-Bera Test passes for the 10-Year Bond, it having more central tendency (hence being more predictable) in nominal inflation, since I fail to reject $H_0$ with 56.60% confidence.</p>
 
 </div>
 </div>
@@ -20105,7 +20111,7 @@ Details:
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>For securities that passed the JB test</strong>, one "passes" if I allow $\alpha \geq 2.78\%$, i.e., the $30$ Year T-bond, and the $10$ Year T-Bond, I begin by computing deviation scores, of a covariance matrix for the raw scores. I previously included all the bonds in the multivariate normal distribution, but this would be erronous (some of the limitation of a top-down approach to modeling).</p>
+<p><strong>For securities that pass the J-B test</strong>, one "passes" if I allow $\alpha \geq 2.78\%$, i.e., the $30$ Year T-bond, and the $10$ Year T-Bond. I begin by computing deviation scores, of a covariance matrix for the raw scores. I previously included all the bonds in the multivariate normal distribution, but this would be erronous (some of the limitation of a top-down approach to modeling); since some of the series are not normally distributed, an <code>MvNormal</code> model would be erroneous.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
