@@ -36,12 +36,6 @@ function h4(M, T, A, B, lb)
     return b
 end
 
-function h5(N, R)
-    tup = Array{Tuple, 1}(undef, 5)
-    tup[1] = (5, sum(N[:, :BC_5YEAR] .<= 0), sum(R[:, :BC_5YEAR] .<= 0))
-    tup[2] = (7, sum(N[:, :BC_7YEAR] .<= 0), sum(R[:, :BC_7YEAR] .<= 0))
-    tup[3] = (10, sum(N[:, :BC_10YEAR] .<= 0), sum(R[:, :BC_10YEAR] .<= 0))
-    tup[4] = (20, sum(N[:, :BC_20YEAR] .<= 0), sum(R[:, :BC_20YEAR] .<= 0))
-    tup[5] = (30, sum(N[:, :BC_30YEAR] .<= 0), sum(R[:, :BC_30YEAR] .<= 0))
-    return tup
+function h5(tnf)
+    return [sum(tnf[:, C] .< 0) for C in 1:5]
 end
