@@ -1,5 +1,7 @@
 .ipynb_checkpoints
+*.csv
 out.csv
 saved1
 saved2
 *.html
+scrap.ipynb
