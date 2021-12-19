@@ -13,9 +13,9 @@ function h1(s, lb, train_percentage)
 end
 
 function h2(M, A, B, lb)
-    q = qqnorm(M[:, A], layout = (1, 1), legend = :topright, size = (900, 500), label = lb[1])
+    q = qqnorm(M[:, A], layout = (1, 1), legend = :topleft, size = (900, 500), label = lb[1])
     for C in A+1:B
-        qqnorm!(M[:, C], layout = (1, 1), legend = :topright, size = (900, 500), label = lb[C])
+        qqnorm!(M[:, C], layout = (1, 1), legend = :topleft, size = (900, 500), label = lb[C])
     end
     return q
 end
