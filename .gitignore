@@ -1,8 +1,7 @@
 mod
 .ipynb_checkpoints
 *.csv
-out.csv
-saved1
-saved2
+N_CMT
+R_CMT
 *.html
 scrap.ipynb
