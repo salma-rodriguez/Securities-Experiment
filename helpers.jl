@@ -20,6 +20,14 @@ function h2(M, A, B, lb)
     return q
 end
 
+function h2_1(M, A, B, lb)
+    q = qqplot(M[:, A], layout = (1, 1), legend = :topleft, size = (900, 500), label = lb[1])
+    for C in A+1:B
+        qqplot!(M[:, C], layout = (1, 1), legend = :topleft, size = (900, 500), label = lb[C])
+    end
+    return q
+end
+
 function h3(M, A, B)
     b = boxplot(M[:, A], layout = (1, 1), legend = :bottomright, size = (900, 500))
     for C in A+1:B
