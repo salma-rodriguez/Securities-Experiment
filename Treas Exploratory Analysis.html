@@ -14761,7 +14761,7 @@ $$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Saving-the-Data-Sets-for-Using-in-Other-Notebooks">Saving the Data Sets for Using in Other Notebooks<a class="anchor-link" href="#Saving-the-Data-Sets-for-Using-in-Other-Notebooks">&#182;</a></h3>
+<h3 id="Saving-the-Datasets-for-Using-in-Other-Notebooks">Saving the Datasets for Using in Other Notebooks<a class="anchor-link" href="#Saving-the-Datasets-for-Using-in-Other-Notebooks">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -19226,7 +19226,7 @@ M280.598 1826.84 L760.967 1826.84 L760.967 1723.16 L280.598 1723.16  Z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Plotting inflation rate for $5$yr and $7$yr note CMTs, as well as $10$yr, $20$yr and $30$yr bond CMTs, destinguishing between training and test data sets (currently the <code>s_test</code> data set is empty, although I will try some cross validation, sampling across thirty years of historical yield curve rate data, in <code>Treas TS Analysis II</code>.</p>
+<p>Plotting inflation rate for $5$yr and $7$yr note CMTs, as well as $10$yr, $20$yr and $30$yr bond CMTs, destinguishing between training and test datasets (currently the <code>s_test</code> dataset is empty, although I will try some cross validation, sampling across thirty years of historical yield curve rate data, in <code>Treas TS Analysis II</code>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19235,8 +19235,7 @@ M280.598 1826.84 L760.967 1826.84 L760.967 1723.16 L280.598 1723.16  Z
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;helpers.jl&quot;</span><span class="p">)</span>
-<span class="k">using</span> <span class="n">Plots</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;helpers.jl&quot;</span><span class="p">);</span> <span class="k">using</span> <span class="n">Plots</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">tnf</span>
 <span class="n">lb</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;5Y&quot;</span><span class="p">,</span> <span class="s">&quot;7Y&quot;</span><span class="p">,</span> <span class="s">&quot;10Y&quot;</span><span class="p">,</span> <span class="s">&quot;20Y&quot;</span><span class="p">,</span> <span class="s">&quot;30Y&quot;</span><span class="p">];</span> <span class="n">s_train</span><span class="p">,</span> <span class="n">s_test</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">h1</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">lb</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">p</span>
@@ -23544,7 +23543,7 @@ Details:
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I want to determine if the transformed data set has a normal distribution. The Jarque-Bera Lagrange Multiplier Test attempts to determine the normality of the data set, by testing higher order moments, such as <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
+<p>I want to determine if the transformed dataset has a normal distribution. The Jarque-Bera Lagrange Multiplier Test attempts to determine the normality of the dataset, by testing higher order moments, such as <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
