@@ -1,9 +1,9 @@
 using DataFrames, Dates, EzXML, HTTP, Serialization
 
-NBASE =
-    "https://data.treasury.gov/feed.svc/DailyTreasuryYieldCurveRateData?"
-RBASE =
-    "https://data.treasury.gov/feed.svc/DailyTreasuryRealYieldCurveRateData?"
+BASE  = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?"
+
+NBASE = BASE * "data=daily_treasury_yield_curve&field_tdr_date_value"
+RBASE = BASE * "data=daily_treasury_real_yield_curve&field_tdr_date_value"
 
 NNAME = Dict(
     "BC_1MONTH" => 3,
@@ -37,14 +37,32 @@ RNAME = Dict(
     "TC_30YEARDISPLAY" => 15
 )
 
-
 function __get_HTTPS_Resp_Data(yr, nom)
     if !(nom in [true, false])
         throw(UndefKeywordError(:nom))
     end
+    if !(yr isa String)
+        throw(ArgumentError(yr))
+    end
     sux = nom == true ?
-        HTTP.get(NBASE * "\$" * "filter=year(NEW_DATE)%20eq%20" * yr) :
-        HTTP.get(RBASE * "\$" * "filter=year(NEW_DATE)%20eq%20" * yr)
+        HTTP.get(NBASE * "=" * yr) :
+        HTTP.get(RBASE * "=" * yr)
+    return String(sux.body)
+end
+
+function __get_HTTPS_Resp_Data(mo, yr, nom)
+    if !(nom in [true, false])
+        throw(UndefKeywordError(:nom))
+    end
+    if !(mo isa String)
+        throw(ArgumentError(mo))
+    end
+    if !(yr isa String)
+        throw(ArgumentError(yr))
+    end
+    sux = nom == true ?
+        HTTP.get(NBASE * "_month=" * yr * mo) :
+        HTTP.get(RBASE * "_month=" * yr * mo)
     return String(sux.body)
 end
 
@@ -83,7 +101,7 @@ function __get_DataFrame(sux, nom)
                           U[i, I] for i in 1:size(U)[1], I in 1:size(U)[2]]
 
     I = 4
-    K = nom ? NNAME : RNAME
+    # K = nom ? NNAME : RNAME
     B = U .== "NaN"
     while I < size(y)[1]-1 && y[I] !=([])
         if sum(B[:, I]) == size(U)[1]
@@ -118,34 +136,30 @@ function __get_DataFrame(sux, nom)
     return tux
 end
 
-function __get_HTTPS_Resp_Data(mo, yr, nom)
-    sux = nom == true ?
-        HTTP.get(NBASE * "\$" * "filter=month(NEW_DATE)%20eq%20" * mo *
-                                "%20and%20year(NEW_DATE)%20eq%20" * yr) :
-        HTTP.get(RBASE * "\$" * "filter=month(NEW_DATE)%20eq%20" * mo *
-                                "%20and%20year(NEW_DATE)%20eq%20" * yr)
-    return String(sux.body)
-end
-
 function interpolateValue((x_a, y_a), (x_b, y_b), x)
     y = y_a + (y_b - y_a) * ((x - x_a) / (x_b - x_a))
     return y
 end
 
-function DailyTreasuryYieldCurveRateData(yr, nom)
-    sux = __get_HTTPS_Resp_Data("1", yr, nom)
-    tvx = DailyTreasuryYieldCurveRateData("1", yr, nom)
-    for mo in [join(I, "") for I in 2:12]
-        sux = __get_HTTPS_Resp_Data(mo, yr, nom)
-        tux = DailyTreasuryYieldCurveRateData(mo, yr, nom)
-        tvx = append!(tvx, tux)
-    end
-    return tvx
-end
-
 function DailyTreasuryYieldCurveRateData(mo, yr, nom)
     sux = __get_HTTPS_Resp_Data(mo, yr, nom)
     tux = __get_DataFrame(sux, nom)
+    return tux
+end
+
+function DailyTreasuryYieldCurveRateData(yr, nom)
+    sux = __get_HTTPS_Resp_Data("01", yr, nom)
+    tux = DailyTreasuryYieldCurveRateData("01", yr, nom)
+    for mo in ["0" * join(I, "") for I in 2:9]
+        sux = __get_HTTPS_Resp_Data(mo, yr, nom)
+        tvx = DailyTreasuryYieldCurveRateData(mo, yr, nom)
+        tux = append!(tux, tvx)
+    end
+    for mo in [join(I, "") for I in 10:12]
+        sux = __get_HTTPS_Resp_Data(mo, yr, nom)
+        tvx = DailyTreasuryYieldCurveRateData(mo, yr, nom)
+        tux = append!(tux, tvx)
+    end
     return tux
 end
 
