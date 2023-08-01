@@ -6,4 +6,5 @@ mod
 N_CMT
 R_CMT
 *.html
+ptable.txt
 scrap.ipynb
