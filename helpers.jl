@@ -44,6 +44,6 @@ function h4(M, T, A, B, lb)
     return b
 end
 
-function h5(tnf)
-    return [sum(tnf[:, C] .< 0) for C in 1:5]
+function h5(A)
+    return [sum(A[:, C] .< 0) for C in 1:5]
 end
