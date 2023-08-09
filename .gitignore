@@ -8,3 +8,5 @@ mod
 fits
 ml
 ptable.txt
+*.sh
+crypto-enc
