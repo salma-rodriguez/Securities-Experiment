@@ -9,4 +9,4 @@ R_CMT
 ptable.txt
 scrap.ipynb
 *.sh
-crypto-enc
+*-enc
