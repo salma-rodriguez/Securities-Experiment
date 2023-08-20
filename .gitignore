@@ -9,4 +9,5 @@ fits
 ml
 ptable.txt
 *.sh
+*.sh-enc
 crypto-enc
